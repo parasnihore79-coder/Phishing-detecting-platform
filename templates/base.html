@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | SENTINEL X</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="{{ url_for('dashboard') }}">
+            <span class="brand-mark">🛡</span>
+            <span>
+                <b>SENTINEL X</b>
+                <small>SOC INTELLIGENCE</small>
+            </span>
+        </a>
+
+        <div class="nav-caption">CORE COMMAND</div>
+        <nav class="nav-list">
+            <a class="nav-item {{ 'active' if request.endpoint == 'dashboard' else '' }}" href="{{ url_for('dashboard') }}">
+                <span>⚡</span> Overview Dashboard
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'scanner' else '' }}" href="{{ url_for('scanner') }}">
+                <span>🌐</span> Website Security Scanner
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'phishing_ai' else '' }}" href="{{ url_for('phishing_ai') }}">
+                <span>🤖</span> Phishing Detection AI
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'ssl_analyzer' else '' }}" href="{{ url_for('ssl_analyzer') }}">
+                <span>🔒</span> SSL/TLS Certificate Analyzer
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'site_assessment' else '' }}" href="{{ url_for('site_assessment') }}">
+                <span>🛡</span> Website Vulnerability Assessment
+            </a>
+        </nav>
+
+        <div class="nav-caption nav-gap">THREAT INTELLIGENCE</div>
+        <nav class="nav-list">
+            <a class="nav-item {{ 'active' if request.endpoint == 'threat_intelligence' else '' }}" href="{{ url_for('threat_intelligence') }}">
+                <span>🔗</span> Threat Intelligence Network
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'email_phishing' else '' }}" href="{{ url_for('email_phishing') }}">
+                <span>✉</span> Email Phishing Analyzer
+            </a>
+            <a class="nav-item {{ 'active' if request.endpoint == 'history' else '' }}" href="{{ url_for('history') }}">
+                <span>📋</span> Threat Reports
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="engine-card">
+                <span class="pulse"></span>
+                <div>
+                    <b>Engine Status</b>
+                    <small>Optimal (99.9% SLA)</small>
+                </div>
+            </div>
+            <a class="nav-item {{ 'active' if request.endpoint == 'settings' else '' }}" href="{{ url_for('settings') }}">
+                <span>⚙</span> Settings & API Management
+            </a>
+            <div class="profile">
+                <div class="avatar">S</div>
+                <div>
+                    <b>analyst@sentinelx.io</b>
+                    <small>Security Analyst</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-button" id="menuButton" type="button">☰</button>
+            <div class="crumb">SOC Workspace <span>/</span> {{ page_title }}</div>
+            <div class="top-right-group">
+                <div class="engine-status-pill">
+                    <span class="pulse"></span>
+                    <span>Engine Status: Optimal (99.9% SLA)</span>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            SENTINEL X SOC INTELLIGENCE <span>•</span> SECURITY PLATFORM
+        </footer>
+    </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

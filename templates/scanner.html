@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow"><i></i> DEEP SCAN ENGINE</div>
+    <h1>Inspect Suspicious <span>URL</span></h1>
+    <p>Analyze target domains for phishing indicators, malicious redirects, raw IP usage, and typosquatting.</p>
+</section>
+
+<section class="panel">
+    <form id="scanForm">
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">TARGET DOMAIN OR URL</label>
+        <div style="display:flex; gap:12px; margin-bottom: 14px;">
+            <input id="urlInput" type="text" placeholder="https://example-phishing-site.com" required style="flex:1;">
+            <button class="primary-btn" id="scanButton" type="submit">Analyse URL →</button>
+        </div>
+    </form>
+</section>
+
+<section class="panel result-panel hidden" id="resultPanel">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+            <div class="eyebrow">SCAN REPORT</div>
+            <h2 id="scannedUrl" style="margin:4px 0; word-break:break-all;"></h2>
+        </div>
+        <span id="verdictBadge" class="verdict">PENDING</span>
+    </div>
+
+    <div style="display:flex; gap:20px; align-items:center; margin:20px 0;">
+        <div class="score-ring" id="scoreRing" style="width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#1e293b; color:#fff; font-weight:bold; font-size:18px;">
+            <span id="riskScore">0</span>
+        </div>
+        <div>
+            <h3 style="margin:0;">Risk Assessment Score</h3>
+            <p style="margin:4px 0 0 0; color:var(--muted); font-size:12px;">Scale: 0 (Safe) to 100 (Critical Malicious Threat)</p>
+        </div>
+    </div>
+
+    <div class="nav-caption">DETECTION FINDINGS & ANOMALIES</div>
+    <div id="findingsList" class="findings-list" style="margin-top:10px;"></div>
+</section>
+{% endblock %}

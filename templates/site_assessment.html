@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow"><i></i> VULNERABILITY AUDITOR</div>
+    <h1>Website Vulnerability <span>Assessment</span></h1>
+    <p>Perform an automated audit of HTTP response headers, SSL transport, and server configuration security.</p>
+</section>
+
+<section class="panel">
+    <form id="siteForm">
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">TARGET HOSTNAME OR URL</label>
+        <div style="display:flex; gap:12px; margin-bottom: 14px;">
+            <input id="siteUrl" type="text" placeholder="https://target-domain.com" required style="flex:1;">
+            <button class="primary-btn" id="siteButton" type="submit">Run Audit →</button>
+        </div>
+    </form>
+</section>
+
+<section class="panel result-panel hidden" id="siteResults">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+            <div class="eyebrow">VULNERABILITY SCORECARD</div>
+            <h2 id="siteHost" style="margin:4px 0; word-break:break-all;"></h2>
+        </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin:20px 0;">
+        <div style="background:#070b14; padding:12px; border-radius:8px; border:1px solid var(--border);">
+            <small style="color:var(--muted); font-size:10px;">HEADER RISK SCORE</small>
+            <div style="font-size:20px; font-weight:bold; color:var(--cyan);" id="siteScore">0</div>
+        </div>
+        <div style="background:#070b14; padding:12px; border-radius:8px; border:1px solid var(--border);">
+            <small style="color:var(--muted); font-size:10px;">STATUS CODE</small>
+            <div style="font-size:20px; font-weight:bold; color:#fff;" id="siteHttp">-</div>
+        </div>
+        <div style="background:#070b14; padding:12px; border-radius:8px; border:1px solid var(--border);">
+            <small style="color:var(--muted); font-size:10px;">HTTPS ENFORCED</small>
+            <div style="font-size:20px; font-weight:bold; color:#fff;" id="siteHttps">-</div>
+        </div>
+        <div style="background:#070b14; padding:12px; border-radius:8px; border:1px solid var(--border);">
+            <small style="color:var(--muted); font-size:10px;">SERVER HEADER</small>
+            <div style="font-size:14px; font-weight:bold; color:#fff; word-break:break-all;" id="siteServer">-</div>
+        </div>
+    </div>
+
+    <div class="nav-caption">SECURITY HEADER AUDIT</div>
+    <div id="siteFindings" class="findings-list" style="margin-top:10px;"></div>
+</section>
+{% endblock %}

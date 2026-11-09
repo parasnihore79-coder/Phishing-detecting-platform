@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow"><i></i> WORKSPACE CONTROL</div>
+    <h1>Settings & <span>API Management</span></h1>
+    <p>Configure API integrations, active threat feeds, and security thresholds.</p>
+</section>
+
+<section class="panel">
+    <h3>Active API Access Key</h3>
+    <div class="finding info" style="margin-top:10px;">
+        <strong>Secret Key:</strong>
+        <p style="font-family:monospace; color:var(--cyan); margin-top:4px;">stx_live_998348920184920391823</p>
+    </div>
+    <button class="primary-btn" style="margin-top:16px;" onclick="alert('Settings saved successfully!')">Save Preferences</button>
+</section>
+{% endblock %}

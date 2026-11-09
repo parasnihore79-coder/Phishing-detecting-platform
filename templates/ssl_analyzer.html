@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow"><i></i> ENCRYPTION AUDITOR</div>
+    <h1>SSL/TLS Certificate <span>Analyzer</span></h1>
+    <p>Inspect certificate validity, cryptographic issuer chain, TLS versions, and expiration timelines.</p>
+</section>
+
+<section class="panel">
+    <form id="sslForm">
+        <div class="input-row">
+            <input id="sslUrl" type="text" placeholder="https://api.enterprise-pay-gateway.net" required>
+            <button class="primary-btn" id="sslButton" type="submit">Inspect Certificate →</button>
+        </div>
+    </form>
+</section>
+
+<section class="panel result-panel hidden" id="sslResults">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 id="sslHost"></h2>
+        <span id="sslStatus" class="verdict">CHECKED</span>
+    </div>
+
+    <div class="stats-grid" style="margin-top:20px;">
+        <article class="stat-card">
+            <div class="stat-label">Days Remaining</div>
+            <strong id="sslDays">—</strong>
+        </article>
+        <article class="stat-card">
+            <div class="stat-label">TLS Protocol</div>
+            <strong id="sslVersion" style="font-size:18px;">—</strong>
+        </article>
+        <article class="stat-card" style="grid-column: span 2;">
+            <div class="stat-label">Issuer Authority</div>
+            <strong id="sslIssuer" style="font-size:16px; margin-top:14px;">—</strong>
+        </article>
+    </div>
+
+    <div id="sslFindings" class="findings-list" style="margin-top:16px;"></div>
+</section>
+{% endblock %}

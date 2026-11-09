@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow"><i></i> INBOX DEFENSE MODULE</div>
+    <h1>Email Phishing <span>Analyzer</span></h1>
+    <p>Inspect incoming email headers, sender spoofing indicators, and malicious social engineering content.</p>
+</section>
+
+<section class="panel">
+    <form id="emailForm">
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">SENDER EMAIL ADDRESS</label>
+        <div style="margin-bottom: 14px;">
+            <input id="emailSender" type="text" placeholder="security@apple-support-verify.com" required>
+        </div>
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">EMAIL SUBJECT</label>
+        <div style="margin-bottom: 14px;">
+            <input id="emailSubject" type="text" placeholder="Urgent: Verify your account immediately" required>
+        </div>
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">EMAIL BODY TEXT</label>
+        <div style="margin-bottom: 14px;">
+            <textarea id="emailBody" rows="4" style="width:100%; padding:13px; background:#070b14; border:1px solid var(--border); border-radius:9px; color:white; font-size:12px;" placeholder="Paste email content here..." required></textarea>
+        </div>
+        <button class="primary-btn" id="emailButton" type="submit">Analyze Email Headers →</button>
+    </form>
+</section>
+
+<section class="panel result-panel hidden" id="emailResultPanel">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+            <div class="eyebrow">ANALYSIS RESULT</div>
+            <h2 id="emailVerdictTitle" style="margin:4px 0;"></h2>
+        </div>
+        <span id="emailBadge" class="verdict">PENDING</span>
+    </div>
+    <div id="emailFindings" class="findings-list" style="margin-top:16px;"></div>
+</section>
+{% endblock %}

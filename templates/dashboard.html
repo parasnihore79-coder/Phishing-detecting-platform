@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div>
+        <div class="eyebrow"><i></i> SECURITY OPERATIONS COMMAND CENTER</div>
+        <h1>Real-time <span>threat telemetry.</span></h1>
+        <p>Unified security dashboard to inspect malicious links, analyze active threat indicators, and run infrastructure scans.</p>
+    </div>
+    <a class="primary-btn" href="{{ url_for('scanner') }}">Run New Threat Scan →</a>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <div class="stat-label">Total Websites Analyzed</div>
+        <strong id="totalScans">1,248,390</strong>
+        <small>+12.4% vs last week</small>
+    </article>
+    <article class="stat-card">
+        <div class="stat-label">Malicious Detected</div>
+        <strong id="highRisk" style="color:var(--red)">14,892</strong>
+        <small>+4.1% vs last week</small>
+    </article>
+    <article class="stat-card">
+        <div class="stat-label">Recent Activity Logs</div>
+        <strong id="recentCount">3,421</strong>
+        <small>Saved session records</small>
+    </article>
+    <article class="stat-card">
+        <div class="stat-label">Global Security Score</div>
+        <strong style="color:var(--green)">88.4 / 100</strong>
+        <small>Optimal score rating</small>
+    </article>
+</section>
+
+<section class="two-col">
+    <article class="panel">
+        <div class="eyebrow">QUICK COMMAND</div>
+        <h2>Inspect Suspicious URL</h2>
+        <p>Analyze domain signals, typosquatting vectors, and phishing heuristics.</p>
+        <a class="primary-btn" href="{{ url_for('scanner') }}" style="margin-top:14px;">Open Scanner →</a>
+    </article>
+    <article class="panel">
+        <div class="eyebrow">MODULE PIPELINE</div>
+        <h2>Security Status</h2>
+        <div class="finding success" style="margin-top:10px;">
+            <strong>URL Scanner Engine</strong>
+            <p>Active and monitoring</p>
+        </div>
+    </article>
+</section>
+
+<section class="panel">
+    <div class="eyebrow">RECENT INCIDENT FEED</div>
+    <h2>Latest Scans</h2>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>SCORE</th>
+                    <th>ASSESSMENT</th>
+                    <th>TIMESTAMP</th>
+                </tr>
+            </thead>
+            <tbody id="overviewHistory">
+                <tr><td colspan="4" class="empty">Loading recent activity...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

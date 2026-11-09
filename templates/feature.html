@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+    <div class="eyebrow">{{ eyebrow }}</div>
+    <h1>{{ heading }}</h1>
+    <p>{{ description }}</p>
+</section>
+
+<section class="panel">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3>Telemetry Status</h3>
+        <span class="verdict badge-success">{{ status }}</span>
+    </div>
+
+    <div style="background:#070b14; border:1px solid var(--border); padding:16px; border-radius:8px; margin-bottom:20px;">
+        <ul style="list-style:none; padding:0; margin:0;">
+            {% for bullet in bullets %}
+            <li style="margin-bottom:10px; font-size:13px; color:#cbd5e1; display:flex; align-items:center; gap:8px;">
+                <span style="color:var(--cyan);">✓</span> {{ bullet }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label style="display:block; font-size:10px; font-weight:700; margin-bottom:8px; color:var(--muted)">ENTER TARGET DOMAIN / INPUT FOR REAL-TIME SIMULATION</label>
+        <div style="display:flex; gap:12px;">
+            <input id="featureInput" type="text" placeholder="enter domain or raw telemetry string..." style="flex:1;">
+            <button class="primary-btn" id="featureBtn" type="button">Run Live Intelligence Test →</button>
+        </div>
+    </div>
+
+    <div id="featureResult" class="findings-list hidden"></div>
+
+    <p style="margin-top:16px; font-size:11px; color:var(--muted);"><i>Note: {{ note }}</i></p>
+</section>
+{% endblock %}
